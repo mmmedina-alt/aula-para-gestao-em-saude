@@ -1,50 +1,97 @@
-# Modelo de Currículo em Português
+# Currículo — Matheus Medina
 
-Se você precisa de ajuda para criar frases impactantes para seu currículo, utilize o prompt disponível na pasta "prompts" e insira-o em um LLM (modelo de linguagem) para pedir sugestões. Recomendo fortemente que você tente primeiro escrever suas próprias ideias e, depois, peça ao agente sugestões de melhoria. Pedir para o agente criar todo o currículo do zero pode resultar em um texto genérico, facilmente identificado por recrutadores.
-
-Você pode fornecer ao agente algo como:
-
-> "Meu objetivo principal é encontrar vagas [internacionais, nacionais]. Tenho preferência por empresas [do Brasil, dos EUA, da Europa etc.], mas estou aberto(a) a oportunidades em [Brasil, EUA, Europa etc.].  
-> Atualmente, (trabalho como [sua função]) OU (sou estudante de [seu curso]), e busco vagas de [nível, ex: júnior, pleno, sênior] para [cargo desejado].  
-> Vamos revisar cada tópico do meu currículo para corrigir erros gramaticais e encontrar formas melhores de expressar o que escrevi. Quero que você foque no mercado profissional [brasileiro, internacional] e seja cuidadoso com a terminologia utilizada."
-
-Consulte também o arquivo [`../../prompts/prompt_pt-br.md`](../../prompts/prompt_pt-br.md) para um prompt detalhado e orientações específicas.
-
-## Seções do Modelo
-
-### Formação Acadêmica
-
-- Liste universidade, local, grau e datas para cada experiência.
-- Se estiver buscando o primeiro emprego ou estágio, coloque esta seção logo abaixo do cabeçalho; caso contrário, deixe-a ao final do currículo.
-
-### Atividades de Liderança
-
-- Ótima seção para demonstrar iniciativa e trabalho em equipe fora das experiências profissionais tradicionais.
-
-### Experiência Profissional
-
-- Use verbos de ação para descrever conquistas. Quantifique resultados sempre que possível.
-- Detalhe as experiências da mais recente para a mais antiga.
-- Foque em realizações, não apenas em tarefas. Utilize o método STAR (Situação, Tarefa, Ação, Resultado) para estruturar os tópicos.
-- Destaque habilidades transferíveis como mentoria, comunicação e colaboração.
-
-### Habilidades
-
-- Seja conciso e relevante para as vagas desejadas.
-
-# Dicas para Currículo
-
-Estas dicas foram adaptadas do artigo da [Harvard](https://careerservices.fas.harvard.edu/resources/create-a-strong-resume/). Recomendo a leitura completa do artigo.
-
-## O currículo deve ser:
-
-- Específico, não genérico
-- Ativo, não passivo
-- Escrito para expressar, não impressionar
-- Claro e objetivo, evitando floreios
-- Baseado em fatos (quantifique e qualifique)
-- Escrito para pessoas e sistemas que fazem leitura rápida
+Este é o meu currículo pessoal em LaTeX. Abaixo estão as instruções para editar, visualizar e atualizar no futuro.
 
 ---
 
-Para dúvidas sobre o template LaTeX, consulte os comentários no arquivo `curriculo.tex`.
+## Como abrir e editar
+
+1. Abra o VS Code na pasta `resume-template`
+2. Abra o arquivo `resumes/pt-br/curriculo.tex`
+3. Pressione `Ctrl+Alt+V` para abrir o preview do PDF ao lado
+4. Edite o arquivo — a cada `Ctrl+S` o PDF atualiza automaticamente
+
+> **Requisitos:** MiKTeX instalado + extensão LaTeX Workshop no VS Code.
+
+---
+
+## Estrutura do currículo
+
+O arquivo `curriculo.tex` está organizado nas seguintes seções, nesta ordem:
+
+1. **Cabeçalho** — nome, cidade, email, telefone
+2. **Educação** — formações em ordem decrescente
+3. **Experiência** — experiências profissionais em ordem decrescente
+4. **Projetos e Voluntariados** — bolsas e projetos em ordem decrescente
+5. **Habilidades** — linguagens, ferramentas, tecnologias, certificações e idiomas
+
+---
+
+## Como adicionar uma nova experiência
+
+Copie o bloco abaixo e cole na posição correta (ordem decrescente por data):
+
+```latex
+\cventry{Nome da Empresa}{Cidade, UF}{Cargo}{Mês Ano -- Mês Ano}
+    \begin{itemize}
+        \item Descrição do que você fez.
+        \item Outra descrição.
+        \item Mais uma descrição.
+    \end{itemize}
+```
+
+**Dicas para os bullets:**
+- Comece sempre com um substantivo de ação (Gestão, Desenvolvimento, Criação, Análise...)
+- Seja específico — evite termos genéricos como "apoio" ou "suporte"
+- Máximo de 3 bullets por entrada para manter o visual limpo
+- Evite gerúndio (fazendo, desenvolvendo) — prefira substantivos (desenvolvimento, criação)
+
+---
+
+## Como atualizar habilidades
+
+As habilidades ficam no final do arquivo, na seção `\section{Habilidades}`. Basta adicionar ou remover itens nas listas existentes:
+
+- **Linguagens** — linguagens de programação e marcação
+- **Ferramentas** — softwares e plataformas do dia a dia
+- **Tecnologias** — frameworks e bancos de dados
+- **Certificações** — cursos com certificado relevante
+- **Idiomas** — idiomas com nível de proficiência
+
+---
+
+## Como gerar o PDF
+
+**Opção 1 — Automático (recomendado):**
+Salve o arquivo com `Ctrl+S` — o LaTeX Workshop compila e atualiza o preview.
+
+**Opção 2 — Manual pelo terminal:**
+```bash
+cd resumes/pt-br
+pdflatex -interaction=nonstopmode curriculo.tex
+```
+
+O PDF gerado fica em `resumes/pt-br/curriculo.pdf`.
+
+---
+
+## Como subir as alterações no GitHub
+
+```bash
+git add resumes/pt-br/curriculo.tex
+git commit -m "feat: atualizar currículo"
+git push
+```
+
+> O GitHub Actions compila o LaTeX automaticamente a cada push e disponibiliza o PDF na aba **Actions > último build > Artifacts**.
+
+---
+
+## Checklist antes de atualizar
+
+- [ ] Todas as experiências estão em ordem decrescente?
+- [ ] Os cargos estão consistentes (empresa -- vínculo no 1º campo, cargo no 3º)?
+- [ ] Os bullets seguem o padrão de substantivo + complemento?
+- [ ] Português correto, sem gerúndios soltos?
+- [ ] As datas estão no formato `Mês Ano -- Mês Ano`?
+- [ ] O PDF compilou sem erros?
