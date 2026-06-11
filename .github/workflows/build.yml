@@ -3,6 +3,9 @@ name: Build
 on:
   push:
 
+permissions:
+  contents: write
+
 jobs:
   generate-pdf:
     runs-on: ubuntu-latest
@@ -23,7 +26,7 @@ jobs:
       - name: Build Portuguese Resume
         working-directory: resumes/pt-br
         run: pdflatex curriculo.tex
-      
+
       - name: Upload generated PDFs to GitHub Actions Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -31,3 +34,15 @@ jobs:
           path: |
             resumes/en/resume.pdf
             resumes/pt-br/curriculo.pdf
+
+      - name: Commit generated PDFs back to the repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f resumes/en/resume.pdf resumes/pt-br/curriculo.pdf
+          if git diff --staged --quiet; then
+            echo "No PDF changes to commit."
+          else
+            git commit -m "ci: gerar PDFs do currículo automaticamente [skip ci]"
+            git push
+          fi
