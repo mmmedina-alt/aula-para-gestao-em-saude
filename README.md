@@ -72,7 +72,22 @@ While possible, **it is not recommended**. One of the main benefits of LaTeX is 
 
 If you are using **Prism**, you can simply download the generated PDF directly from their interface. 
 
-Alternatively, if you are familiar with GitHub, each push (upload of code) to the repository will automatically generate new PDFs via a workflow. You can download them from the "Actions" tab in GitHub.
+Alternatively, if you are using GitHub, every push (commit) to the repository triggers a workflow that compiles the `.tex` files and **commits the updated PDFs back into the repository**. After the workflow finishes (~1–2 min), the updated `curriculo.pdf` / `resume.pdf` will be available directly in the repo (no need to download artifacts).
+</details>
+
+<details>
+<summary><strong>How do I edit my resume directly on GitHub (no local setup)?</strong></summary>
+
+You can edit and regenerate your PDF entirely from the browser — no VS Code, no Git, no LaTeX install required:
+
+1. Open the `.tex` file on GitHub (e.g. `resumes/pt-br/curriculo.tex`).
+2. Click the **pencil icon ✏️** ("Edit this file").
+3. Make your changes in the editor.
+4. Click **"Commit changes..."** → write a message → commit directly to `main`.
+5. The **Build workflow runs automatically** (watch the **Actions** tab — yellow dot while running, green when done).
+6. When it turns green, the workflow has **committed the updated PDF back** to the repo. Open `curriculo.pdf` / `resume.pdf` to see the new version.
+
+> ⚠️ If you also work locally, run `git pull` before editing locally again, since both your web edit and the auto-generated PDF live on the remote.
 </details>
 
 ---
@@ -135,7 +150,22 @@ Embora seja possível, **não é recomendado**. Um dos principais benefícios do
 
 Se você estiver usando o **Prism**, basta baixar o PDF gerado diretamente pela interface deles.
 
-Alternativamente, se você tem familiaridade com o GitHub, para cada push (envio de código) no repositório, um fluxo de trabalho (workflow) gerará automaticamente novos PDFs. Você pode baixá-los na aba "Actions" (Ações).
+Alternativamente, se você usa o GitHub, cada push (commit) no repositório dispara um workflow que compila os arquivos `.tex` e **commita os PDFs atualizados de volta no repositório**. Após o workflow terminar (~1–2 min), o `curriculo.pdf` / `resume.pdf` atualizado já estará disponível direto no repo (sem precisar baixar artifacts).
+</details>
+
+<details>
+<summary><strong>Como edito meu currículo direto no GitHub (sem instalar nada)?</strong></summary>
+
+Você pode editar e gerar um PDF novo inteiramente pelo navegador — sem VS Code, sem Git, sem instalar LaTeX:
+
+1. Abra o arquivo `.tex` no GitHub (ex: `resumes/pt-br/curriculo.tex`).
+2. Clique no ícone de **lápis ✏️** ("Edit this file").
+3. Faça suas alterações no editor.
+4. Clique em **"Commit changes..."** → escreva uma mensagem → commite direto na `main`.
+5. O **workflow Build roda automaticamente** (acompanhe na aba **Actions** — bolinha amarela rodando, verde quando terminar).
+6. Quando ficar verde, o workflow já terá **commitado o PDF atualizado de volta** no repo. Abra o `curriculo.pdf` / `resume.pdf` para ver a nova versão.
+
+> ⚠️ Se você também trabalha localmente, rode `git pull` antes de editar de novo na sua máquina, já que tanto sua edição web quanto o PDF gerado automaticamente ficam no remoto.
 </details>
 
 ---
