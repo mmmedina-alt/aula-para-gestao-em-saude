@@ -42,11 +42,24 @@ currículo real dele. **Não inventar nem alterar dados pessoais** sem pedir.
 - **Pendente:** versão em inglês `resumes/en/resume.md` (a partir de `resume.tex`) — ainda não feita.
 - **Pendente:** commit/push do `curriculo.md` (ainda não commitado).
 
+## Objetivo principal do repositório: a palestra
+
+O arquivo **`Planejamento de Palestra_ Construção de Currículos com IA.md`** (raiz do
+repo) é o coração do projeto. Resumo:
+
+- **Palestra de 30-35 min** para **calouros do 1º semestre**, apresentada por Matheus Medina.
+- **Tema:** como montar um currículo de alto nível e amigável a sistemas de RH (ATS)
+  usando o template LaTeX (`celiobjunior/resume-template`) + a IA do **Prism**
+  (`prism.openai.com`, editor de código gratuito da OpenAI).
+- Já contém: contexto/objetivo, mensagem de convite (WhatsApp) e **duas opções de
+  estrutura** para a apresentação (Opção A — foco na demo; Opção B — foco na estratégia).
+- O próprio currículo do Matheus (`resumes/pt-br/`) serve de "prova social" / exemplo na demo.
+
 ## Próximos passos discutidos
 
 1. (Opcional) Gerar `resumes/en/resume.md` a partir de `resume.tex`.
-2. Commit + push do(s) Markdown(s).
-3. Direção maior: transformar/criar conteúdo de **aula de Gestão em Saúde** (a definir com o usuário).
+2. Evoluir o planejamento da palestra (escolher Opção A ou B, montar slides/roteiro, etc.).
+3. Direção maior: material de aula de Gestão em Saúde / construção de currículos com IA.
 
 ## Preferências de trabalho observadas
 
