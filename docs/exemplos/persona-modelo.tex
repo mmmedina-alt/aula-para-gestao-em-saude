@@ -1,0 +1,88 @@
+% Exemplo FICTÍCIO de currículo preenchido — persona para a palestra (Gestão em Saúde).
+% Mesmo "motor" LaTeX do modelo da página; conteúdo ilustrativo.
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{xurl}
+\geometry{top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm}
+\setcounter{secnumdepth}{0}
+\setlist[itemize]{leftmargin=0.75em, itemsep=0.2em, topsep=0.25em, parsep=0em, partopsep=0em}
+\pagestyle{empty}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+\titleformat{\section}{\Large\bfseries}{}{0em}{}[\titlerule\vspace{0.5ex}]
+\newcommand{\cventry}[4]{%
+    \noindent\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}X@{}}
+    \textbf{#1} & #2 \\ \textit{#3} & \textit{#4} \\ \end{tabularx}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Ana Beatriz Rocha}} \\ [0.1cm]
+    Porto Alegre, Rio Grande do Sul
+    {\textbullet}
+    \href{mailto:anabeatriz.rocha@exemplo.com}{anabeatriz.rocha@exemplo.com}
+    {\textbullet}
+    \href{https://www.linkedin.com/in/anabeatriz-rocha}{LinkedIn}
+    {\textbullet}
+    +55 51 90000-0000
+\end{center}
+
+\section{Educação}
+    \cventry{Universidade Federal de Ciências da Saúde de Porto Alegre -- UFCSPA}{Porto Alegre, RS}{Bacharelado em Gestão em Saúde (em andamento)}{Mar 2023 -- Conclusão prevista 2027}
+
+    \cventry{Colégio Estadual Marechal Floriano}{Porto Alegre, RS}{Ensino Médio Completo}{Concluído em Dez 2022}
+
+\section{Experiência}
+
+    \cventry{Hospital São Lucas -- Núcleo de Qualidade}{Porto Alegre, RS}{Estagiária em Gestão em Saúde}{Mar 2025 -- atual}
+        \begin{itemize}
+            \item Apuração de indicadores assistenciais e construção de painéis em Power BI para reuniões da gerência.
+            \item Padronização de fluxos administrativos entre setores, com redução do tempo de tramitação de documentos.
+            \item Apoio à análise de não conformidades e à elaboração de planos de ação da equipe de qualidade.
+        \end{itemize}
+
+    \cventry{Clínica Bem-Estar}{Porto Alegre, RS}{Auxiliar Administrativo}{Jan 2023 -- Fev 2025}
+        \begin{itemize}
+            \item Atendimento ao público e triagem de demandas presenciais e por telefone.
+            \item Organização e arquivo de documentos e agendamento de consultas em planilha de controle.
+            \item Conferência de faturamento e controle de materiais de uso administrativo.
+        \end{itemize}
+
+\section{Projetos e Voluntariados}
+
+    \cventry{Liga Acadêmica de Gestão e Economia da Saúde -- UFCSPA}{Porto Alegre, RS}{Diretora de Projetos}{Ago 2024 -- atual}
+        \begin{itemize}
+            \item Coordenação de equipe de oito membros na organização de eventos e ciclos de palestras do curso.
+            \item Criação de parcerias com profissionais do setor para atividades de formação dos estudantes.
+        \end{itemize}
+
+    \cventry{Iniciação Científica -- Gestão de Custos Hospitalares}{Porto Alegre, RS}{Bolsista de Iniciação Científica}{Mar 2024 -- atual}
+        \begin{itemize}
+            \item Coleta e organização de dados de custos em planilhas e apoio à análise estatística descritiva.
+            \item Elaboração de figuras e tabelas para relatórios e apresentação em mostra científica.
+        \end{itemize}
+
+    \cventry{Projeto de Extensão Saúde na Comunidade -- UFCSPA}{Porto Alegre, RS}{Bolsista de Extensão}{Mar 2023 -- Dez 2023}
+        \begin{itemize}
+            \item Planejamento e execução de oficinas de educação em saúde para usuários do SUS em escolas públicas.
+        \end{itemize}
+
+\section{Habilidades}
+    \begin{itemize}
+        \item \textbf{Ferramentas:} Microsoft Excel, Power BI, Google Workspace, Microsoft Office
+        \item \textbf{Conhecimentos:} Indicadores em saúde, gestão de processos, análise de dados
+        \item \textbf{Certificações:} Power BI para Business Intelligence (curso livre, 2024)
+        \item \textbf{Idiomas:} Português (Nativo), Inglês (Intermediário)
+    \end{itemize}
+
+\end{document}

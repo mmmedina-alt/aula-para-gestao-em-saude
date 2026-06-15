@@ -1,0 +1,71 @@
+% Exemplo FICTÍCIO preenchido no template BÔNUS (estilo empilhado, com Resumo).
+% Mesma persona do exemplo principal (Ana Beatriz Rocha), outro estilo visual.
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xurl}
+\geometry{top=1.4cm, bottom=1.4cm, left=1.6cm, right=1.6cm}
+\setcounter{secnumdepth}{0}
+\setlist[itemize]{leftmargin=1.1em, itemsep=0.15em, topsep=0.2em, parsep=0em, partopsep=0em}
+\pagestyle{empty}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule\vspace{0.3ex}]
+\titlespacing*{\section}{0pt}{0.9em}{0.35em}
+\newcommand{\entry}[2]{\noindent\textbf{#1}\\ \textit{#2}\par\vspace{0.15em}}
+
+\begin{document}
+
+{\Huge\textbf{Ana Beatriz Rocha}}\\[3pt]
+{\large Estudante de Gestão em Saúde}\\[3pt]
+Porto Alegre, RS \textbullet{} Disponível para presencial e remoto\\
++55 51 90000-0000 \textbullet{} \href{mailto:anabeatriz.rocha@exemplo.com}{anabeatriz.rocha@exemplo.com}\\
+\href{https://www.linkedin.com/in/anabeatriz-rocha}{LinkedIn}
+
+\section{RESUMO}
+Estudante de Gestão em Saúde (UFCSPA) com experiência em apuração de indicadores assistenciais,
+Power BI e processos administrativos hospitalares. Atuação em iniciação científica e liga acadêmica,
+em busca de estágio na área de qualidade e gestão hospitalar.
+
+\section{EDUCAÇÃO}
+\entry{Bacharelado em Gestão em Saúde (em andamento)}{Universidade Federal de Ciências da Saúde de Porto Alegre -- UFCSPA \textbullet{} Porto Alegre, RS \textbullet{} Mar 2023 -- Conclusão prevista 2027}
+\entry{Ensino Médio Completo}{Colégio Estadual Marechal Floriano \textbullet{} Porto Alegre, RS \textbullet{} Dez 2022}
+
+\section{EXPERIÊNCIA}
+\entry{Estagiária em Gestão em Saúde}{Hospital São Lucas -- Núcleo de Qualidade \textbullet{} Porto Alegre, RS \textbullet{} Mar 2025 -- atual}
+\begin{itemize}
+    \item Apuração de indicadores assistenciais e construção de painéis em Power BI para reuniões da gerência.
+    \item Padronização de fluxos administrativos entre setores, com redução do tempo de tramitação de documentos.
+    \item Apoio à análise de não conformidades e à elaboração de planos de ação da equipe de qualidade.
+\end{itemize}
+
+\entry{Auxiliar Administrativo}{Clínica Bem-Estar \textbullet{} Porto Alegre, RS \textbullet{} Jan 2023 -- Fev 2025}
+\begin{itemize}
+    \item Atendimento ao público e triagem de demandas presenciais e por telefone.
+    \item Organização e arquivo de documentos e agendamento de consultas em planilha de controle.
+\end{itemize}
+
+\section{PROJETOS E VOLUNTARIADOS}
+\entry{Liga Acadêmica de Gestão e Economia da Saúde -- UFCSPA}{Diretora de Projetos \textbullet{} Porto Alegre, RS \textbullet{} Ago 2024 -- atual}
+\begin{itemize}
+    \item Coordenação de equipe de oito membros na organização de eventos e ciclos de palestras do curso.
+\end{itemize}
+
+\entry{Iniciação Científica -- Gestão de Custos Hospitalares}{Bolsista de Iniciação Científica \textbullet{} Porto Alegre, RS \textbullet{} Mar 2024 -- atual}
+\begin{itemize}
+    \item Coleta e organização de dados de custos e apoio à análise estatística descritiva.
+\end{itemize}
+
+\section{HABILIDADES}
+\textbf{Ferramentas:} Microsoft Excel, Power BI, Google Workspace, Microsoft Office\\
+\textbf{Conhecimentos:} Indicadores em saúde, gestão de processos, análise de dados\\
+\textbf{Certificações:} Power BI para Business Intelligence (curso livre, 2024)\\
+\textbf{Idiomas:} Português (Nativo), Inglês (Intermediário)
+
+\end{document}

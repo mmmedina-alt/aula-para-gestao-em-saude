@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currículo de alto nível com IA — Guia rápido</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --card2:#1d212b; --ink:#e8eaed; --muted:#a3a9b5;
+    --accent:#5b8cff; --good:#2ecc71; --bad:#ff5c5c; --line:#2a2f3a; --code:#0b0d11;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 18px 80px}
+  header{text-align:center;padding:48px 0 28px}
+  header h1{font-size:clamp(26px,5vw,40px);margin:0 0 10px;line-height:1.2}
+  header p{color:var(--muted);font-size:clamp(15px,2.5vw,18px);margin:0 auto;max-width:620px}
+  .tag{display:inline-block;background:var(--card2);border:1px solid var(--line);color:var(--muted);
+       border-radius:999px;padding:5px 14px;font-size:13px;margin-bottom:18px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 22px;margin:18px 0}
+  h2{font-size:clamp(20px,3.5vw,26px);margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  h2 .n{background:var(--accent);color:#fff;border-radius:10px;min-width:34px;height:34px;
+        display:inline-flex;align-items:center;justify-content:center;font-size:17px;font-weight:700}
+  .lead{color:var(--muted);margin-top:0}
+  ul{padding-left:20px}
+  li{margin:6px 0}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  @media(max-width:620px){.cols{grid-template-columns:1fr}}
+  .box{border-radius:12px;padding:16px;border:1px solid var(--line);background:var(--card2)}
+  .box h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .box.bad{border-color:#5a2a2a}
+  .box.good{border-color:#2a5a3a}
+  .pill{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+  .pill.bad{background:rgba(255,92,92,.15);color:var(--bad)}
+  .pill.good{background:rgba(46,204,113,.15);color:var(--good)}
+  .shot{width:100%;border-radius:8px;border:1px dashed var(--line);background:var(--code);
+        min-height:150px;display:flex;align-items:center;justify-content:center;color:var(--muted);
+        font-size:13px;text-align:center;padding:14px;margin-top:10px}
+  .shot img{width:100%;border-radius:8px;display:block}
+  .codewrap{position:relative;margin-top:14px}
+  pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:16px;
+      overflow:auto;max-height:320px;font-size:12.5px;line-height:1.5;margin:0}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;color:#cfe1ff}
+  .copy{position:absolute;top:10px;right:10px;background:var(--accent);color:#fff;border:0;
+        border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  .copy:active{transform:scale(.97)}
+  .steps{counter-reset:step;list-style:none;padding:0}
+  .steps li{counter-increment:step;position:relative;padding:14px 14px 14px 56px;margin:10px 0;
+            background:var(--card2);border:1px solid var(--line);border-radius:12px}
+  .steps li::before{content:counter(step);position:absolute;left:14px;top:14px;background:var(--accent);
+            color:#fff;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;
+            justify-content:center;font-weight:700;font-size:14px}
+  a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;
+        padding:12px 22px;border-radius:10px;margin-top:6px}
+  a{color:var(--accent)}
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:620px){.links{grid-template-columns:1fr}}
+  .links a{display:block;background:var(--card2);border:1px solid var(--line);border-radius:10px;
+           padding:12px 14px;text-decoration:none;color:var(--ink)}
+  .links a span{display:block;color:var(--muted);font-size:13px}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+  .rule{background:rgba(91,140,255,.08);border-left:3px solid var(--accent);padding:10px 14px;
+        border-radius:0 8px 8px 0;margin:12px 0;font-size:14px}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  @media(max-width:620px){.gallery{grid-template-columns:1fr}}
+  .ex{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .ex.bad{border-left:3px solid var(--bad)}
+  .ex.good{border-left:3px solid var(--good)}
+  .ex strong{display:block}
+  .ex span{display:block;color:var(--muted);font-size:13px;margin:2px 0 10px}
+  .ex-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .mini{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:8px 12px;
+        font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+  .mini.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .robot-out{margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .robot-head{display:flex;justify-content:space-between;align-items:center;gap:10px;
+        background:var(--card2);padding:10px 14px;font-weight:600}
+  .robot-out pre{border:0;border-radius:0;max-height:360px;white-space:pre-wrap;
+        word-break:break-word;overflow-x:hidden}
+  .robot-cap{background:rgba(255,92,92,.08);color:var(--muted);font-size:13px;padding:8px 14px;
+        border-bottom:1px solid var(--line)}
+  .robot-cols{display:grid;grid-template-columns:1fr 1fr}
+  @media(max-width:620px){.robot-cols{grid-template-columns:1fr}}
+  .robot-pane{min-width:0}
+  .robot-pane + .robot-pane{border-left:1px solid var(--line)}
+  @media(max-width:620px){.robot-pane + .robot-pane{border-left:0;border-top:1px solid var(--line)}}
+  .pane-label{font-size:12px;font-weight:700;letter-spacing:.03em;color:var(--muted);
+        padding:8px 14px;border-bottom:1px solid var(--line);background:var(--card2)}
+  .canvas-wrap{max-height:360px;overflow:auto;background:#fff;padding:12px;text-align:center}
+  .canvas-wrap canvas{max-width:100%;height:auto;box-shadow:0 2px 10px rgba(0,0,0,.25);border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="tag">Palestra · Gestão em Saúde · UFCSPA</span>
+    <h1>Monte um currículo de alto nível com IA</h1>
+    <p>Sem saber programar, de graça, e do jeito que os robôs de RH conseguem ler.
+       Este é o guia que você leva pra casa.</p>
+  </header>
+
+  <!-- 1. ATS -->
+  <section>
+    <h2><span class="n">1</span> Por que seu currículo pode ser descartado por um robô</h2>
+    <p class="lead">Antes de um humano ver, a maioria das empresas usa um <strong>ATS</strong>
+       (Applicant Tracking System) pra triar currículos automaticamente.</p>
+    <ul>
+      <li>Currículos cheios de <strong>colunas, ícones e caixas de texto</strong> (típicos do Canva e do Word) confundem o robô.</li>
+      <li>O ATS lê o texto fora de ordem — ou não lê — e <strong>descarta o candidato</strong> antes da entrevista.</li>
+      <li>Não adianta ser o melhor candidato se a máquina não consegue te <strong>ler</strong>.</li>
+    </ul>
+    <div class="rule">💡 A solução não é um modelo mais bonito — é um formato <strong>linear e legível por máquina</strong>.</div>
+  </section>
+
+  <!-- 2. Comparação -->
+  <section>
+    <h2><span class="n">2</span> Como o robô enxerga: Canva × LaTeX</h2>
+    <p class="lead">O mesmo conteúdo, dois formatos. Clique em <strong>"🤖 Ver como o robô lê"</strong>
+       em cada exemplo abaixo e compare: o que <strong>você vê</strong> (o PDF bonito) × o que o
+       <strong>robô recebe</strong> (o texto extraído). Nos modelos cheios de colunas, sai embaralhado.</p>
+
+    <h3 style="margin-top:22px">Veja como o robô lê cada currículo</h3>
+    <div class="gallery">
+      <div class="ex bad">
+        <strong>❌ Adriana</strong><span>2 colunas + foto + barras de skill</span>
+        <div class="ex-actions">
+          <button class="mini" onclick="robotRead('exemplos/adriana.pdf','Adriana')">🤖 Ver como o robô lê</button>
+          <a class="mini ghost" href="exemplos/adriana.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        </div>
+      </div>
+      <div class="ex bad">
+        <strong>❌ Helena</strong><span>colunas + skill em bolinhas</span>
+        <div class="ex-actions">
+          <button class="mini" onclick="robotRead('exemplos/helena.pdf','Helena')">🤖 Ver como o robô lê</button>
+          <a class="mini ghost" href="exemplos/helena.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        </div>
+      </div>
+      <div class="ex bad">
+        <strong>❌ Marcos</strong><span>colunas coloridas + referências</span>
+        <div class="ex-actions">
+          <button class="mini" onclick="robotRead('exemplos/marcos.pdf','Marcos')">🤖 Ver como o robô lê</button>
+          <a class="mini ghost" href="exemplos/marcos.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        </div>
+      </div>
+      <div class="ex bad">
+        <strong>❌ Amália</strong><span>gráficos decorativos + 2 colunas</span>
+        <div class="ex-actions">
+          <button class="mini" onclick="robotRead('exemplos/amalia.pdf','Amália')">🤖 Ver como o robô lê</button>
+          <a class="mini ghost" href="exemplos/amalia.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        </div>
+      </div>
+      <div class="ex bad">
+        <strong>❌ Isabel</strong><span>2 colunas + foto (o "quase lá")</span>
+        <div class="ex-actions">
+          <button class="mini" onclick="robotRead('exemplos/isabel.pdf','Isabel')">🤖 Ver como o robô lê</button>
+          <a class="mini ghost" href="exemplos/isabel.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        </div>
+      </div>
+      <div class="ex good">
+        <strong>✅ Esther</strong><span>1 coluna, sem foto — legível pelo robô</span>
+        <div class="ex-actions">
+          <button class="mini" onclick="robotRead('exemplos/esther-bom.pdf','Esther')">🤖 Ver como o robô lê</button>
+          <a class="mini ghost" href="exemplos/esther-bom.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        </div>
+      </div>
+      <div class="ex good">
+        <strong>⭐ Ana Beatriz</strong><span>exemplo a seguir — feito neste modelo, formato E conteúdo bons</span>
+        <div class="ex-actions">
+          <button class="mini" onclick="robotRead('exemplos/persona-modelo.pdf','Ana Beatriz')">🤖 Ver como o robô lê</button>
+          <a class="mini ghost" href="exemplos/persona-modelo.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="robotOut" class="robot-out" style="display:none">
+      <div class="robot-head">
+        <span id="robotTitle">Como o robô lê este PDF</span>
+        <button class="mini ghost" onclick="document.getElementById('robotOut').style.display='none'">Fechar</button>
+      </div>
+      <div class="robot-cap">À esquerda, o currículo como ele <strong>parece</strong>. À direita, o texto
+        que o sistema de RH <strong>realmente recebe</strong>. Quanto mais embaralhado, maior a chance de descarte.</div>
+      <div class="robot-cols">
+        <div class="robot-pane">
+          <div class="pane-label">👁️ O que VOCÊ vê</div>
+          <div class="canvas-wrap"><canvas id="robotCanvas"></canvas></div>
+        </div>
+        <div class="robot-pane">
+          <div class="pane-label">🤖 O que o ROBÔ vê</div>
+          <pre id="robotText"><code>…</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead" style="font-size:12.5px;margin-top:12px">Exemplos meramente ilustrativos,
+       com dados fictícios (templates do Canva).</p>
+  </section>
+
+  <!-- 3. O que deve ir no currículo -->
+  <section>
+    <h2><span class="n">3</span> O que todo currículo precisa ter</h2>
+    <div class="cols">
+      <div class="box">
+        <h3>As 5 seções</h3>
+        <ul>
+          <li><strong>Cabeçalho</strong> — nome, cidade, e-mail profissional, LinkedIn, telefone</li>
+          <li><strong>Educação</strong> — formação (em andamento conta!)</li>
+          <li><strong>Experiência</strong> — empregos e estágios</li>
+          <li><strong>Projetos e Voluntariados</strong> — extensão, IC, ligas, monitoria</li>
+          <li><strong>Habilidades</strong> — idiomas, ferramentas, certificações</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Boas práticas</h3>
+        <ul>
+          <li>Bullets começam com <strong>ação</strong> (Atendimento, Organização, Análise…)</li>
+          <li>Seja <strong>específico</strong> — evite "apoio" e "suporte"</li>
+          <li>Máximo <strong>3 bullets</strong> por item, sem gerúndio</li>
+          <li>Ordem cronológica <strong>inversa</strong> (mais recente primeiro)</li>
+          <li><strong>Sem foto</strong>, sem idade, sem pronomes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule">🎓 Está no 1º semestre e acha que não tem nada? <strong>Educação conta</strong>,
+       empregos comuns contam, e a seção de <strong>Projetos</strong> é o que você vai colecionar
+       no curso: ligas, extensão, iniciação científica, monitoria, voluntariado.</div>
+  </section>
+
+  <!-- 4. Modelo pronto pra copiar -->
+  <section>
+    <h2><span class="n">4</span> O modelo pronto (é só copiar)</h2>
+    <p class="lead">Este é o "motor" em LaTeX. Você <strong>não mexe no código</strong> —
+       copia, cola no Prism e conversa com a IA pra preencher.
+       Quer ver como fica pronto? <a href="exemplos/persona-modelo.pdf" target="_blank" rel="noopener">Veja um exemplo preenchido</a> (feito neste mesmo modelo).</p>
+    <div class="codewrap">
+      <button class="copy" onclick="copyTpl(this)">Copiar código</button>
+      <pre><code id="tpl">% Modelo de currículo em LaTeX — preencha pelo Prism conversando com a IA
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{xurl}
+\geometry{top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm}
+\setcounter{secnumdepth}{0}
+\setlist[itemize]{leftmargin=0.75em, itemsep=0.2em, topsep=0.25em, parsep=0em, partopsep=0em}
+\pagestyle{empty}
+\titleformat{\section}{\Large\bfseries}{}{0em}{}[\titlerule\vspace{0.5ex}]
+\newcommand{\cventry}[4]{%
+    \noindent\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}X@{}}
+    \textbf{#1} & #2 \\ \textit{#3} & \textit{#4} \\ \end{tabularx}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Seu Nome}} \\ [0.1cm]
+    Sua Cidade, UF {\textbullet}
+    \href{mailto:seu.email@exemplo.com}{seu.email@exemplo.com} {\textbullet}
+    \href{https://www.linkedin.com/in/seu-usuario}{LinkedIn} {\textbullet}
+    +55 51 90000-0000
+\end{center}
+
+\section{Educação}
+    \cventry{Nome da Universidade}{Cidade, UF}{Seu Curso (em andamento)}{Ano -- Conclusão prevista}
+
+\section{Experiência}
+    \cventry{Nome da Empresa}{Cidade, UF}{Seu Cargo}{Mês Ano -- Mês Ano}
+        \begin{itemize}
+            \item Comece com um substantivo de ação e descreva o que você fez.
+            \item Seja específico; foque no resultado quando possível.
+        \end{itemize}
+
+\section{Projetos e Voluntariados}
+    \cventry{Nome do Projeto}{Cidade, UF}{Seu Papel}{Mês Ano -- Mês Ano}
+        \begin{itemize}
+            \item Atividades acadêmicas, extensão, iniciação científica, ligas, monitoria.
+        \end{itemize}
+
+\section{Habilidades}
+    \begin{itemize}
+        \item \textbf{Ferramentas:} Ex.: Excel, Pacote Office
+        \item \textbf{Idiomas:} Português (Nativo), Inglês (Básico)
+    \end{itemize}
+
+\end{document}</code></pre>
+    </div>
+
+    <h3 style="margin-top:24px">Bônus: estilo alternativo (empilhado, com Resumo)</h3>
+    <p class="lead">Mesmo formato ATS, com o cabeçalho à esquerda, um <strong>cargo sob o nome</strong> e uma
+       seção <strong>Resumo</strong> no topo. Tudo um embaixo do outro.
+       <a href="exemplos/persona-bonus.pdf" target="_blank" rel="noopener">Ver um exemplo preenchido</a>.</p>
+    <div class="codewrap">
+      <button class="copy" onclick="copyById(this,'tplBonus')">Copiar código</button>
+      <pre><code id="tplBonus">% Template BÔNUS — estilo "empilhado" (cabeçalho à esquerda, com Resumo)
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xurl}
+\geometry{top=1.4cm, bottom=1.4cm, left=1.6cm, right=1.6cm}
+\setcounter{secnumdepth}{0}
+\setlist[itemize]{leftmargin=1.1em, itemsep=0.15em, topsep=0.2em, parsep=0em, partopsep=0em}
+\pagestyle{empty}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule\vspace{0.3ex}]
+\titlespacing*{\section}{0pt}{0.9em}{0.35em}
+\newcommand{\entry}[2]{\noindent\textbf{#1}\\ \textit{#2}\par\vspace{0.15em}}
+
+\begin{document}
+
+{\Huge\textbf{Seu Nome}}\\[3pt]
+{\large Seu Cargo ou Área (ex.: Estudante de Gestão em Saúde)}\\[3pt]
+Sua Cidade, UF \textbullet{} Disponível para remoto\\
++55 51 90000-0000 \textbullet{} \href{mailto:seu.email@exemplo.com}{seu.email@exemplo.com}\\
+\href{https://www.linkedin.com/in/seu-usuario}{LinkedIn} \textbullet{} \href{https://github.com/seu-usuario}{GitHub} (opcional)
+
+\section{RESUMO}
+Um parágrafo curto (3 a 4 linhas) com seu perfil, foco e objetivo. Use palavras-chave reais
+da área/vaga — sem frases genéricas.
+
+\section{EDUCAÇÃO}
+\entry{Seu Curso (em andamento)}{Nome da Universidade \textbullet{} Cidade, UF \textbullet{} Ano -- Conclusão prevista}
+\entry{Ensino Médio Completo}{Nome da Escola \textbullet{} Cidade, UF \textbullet{} Ano}
+
+\section{EXPERIÊNCIA}
+\entry{Seu Cargo}{Nome da Empresa \textbullet{} Cidade, UF \textbullet{} Mês Ano -- Mês Ano}
+\begin{itemize}
+    \item Comece com um substantivo de ação e descreva o que você fez.
+    \item Seja específico; quantifique o resultado quando possível.
+\end{itemize}
+
+\section{PROJETOS E VOLUNTARIADOS}
+\entry{Nome do Projeto / Liga / Iniciação Científica}{Instituição \textbullet{} Cidade, UF \textbullet{} Mês Ano -- Mês Ano}
+\begin{itemize}
+    \item Atividades acadêmicas, extensão, monitoria, liga, voluntariado.
+\end{itemize}
+
+\section{HABILIDADES}
+\textbf{Ferramentas:} Ex.: Excel, Power BI, Google Workspace\\
+\textbf{Conhecimentos:} Ex.: indicadores em saúde, gestão de processos\\
+\textbf{Certificações:} Ex.: curso livre relevante (ano)\\
+\textbf{Idiomas:} Português (Nativo), Inglês (Intermediário)
+
+\end{document}</code></pre>
+    </div>
+  </section>
+
+  <!-- 5. Passo a passo -->
+  <section>
+    <h2><span class="n">5</span> Passo a passo (5 minutos)</h2>
+    <ol class="steps">
+      <li><strong>Copie o código</strong> do modelo acima (botão "Copiar código").</li>
+      <li><strong>Abra o Prism</strong> — editor de código com IA da OpenAI. Não precisa criar conta.</li>
+      <li><strong>Crie um arquivo e cole</strong> o código.</li>
+      <li><strong>Converse com a IA</strong>: "preencha meu cabeçalho com estes dados…" e vá seção por seção.</li>
+      <li><strong>Refine os bullets</strong>: peça pra IA melhorar a redação (ação + o quê + resultado).</li>
+      <li><strong>Baixe o PDF</strong> direto pelo Prism. Pronto: currículo limpo e legível por robô.</li>
+    </ol>
+    <div class="rule">⚠️ Não peça pra IA inventar seu currículo do zero — fica genérico e o RH percebe.
+       Você escreve primeiro, mesmo que tosco, e a IA <strong>melhora</strong>.</div>
+    <a class="btn" href="https://prism.openai.com/" target="_blank" rel="noopener">Abrir o Prism →</a>
+  </section>
+
+  <!-- 6. Links -->
+  <section>
+    <h2><span class="n">6</span> Links úteis</h2>
+    <div class="links">
+      <a href="https://prism.openai.com/" target="_blank" rel="noopener">
+        Prism <span>Editor de código com IA (grátis)</span></a>
+      <a href="https://www.linkedin.com/in/mmatheus-medina" target="_blank" rel="noopener">
+        LinkedIn do Matheus <span>Dúvidas e networking</span></a>
+    </div>
+  </section>
+
+  <footer>
+    Página e material da palestra por <strong>Matheus Medina</strong> · Gestão em Saúde – UFCSPA · 2026<br>
+    Feito para a turma do 1º semestre.
+  </footer>
+
+</div>
+
+<script src="vendor/pdf.min.js"></script>
+<script>
+if (window.pdfjsLib) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js';
+}
+
+async function robotRead(url, nome){
+  const box = document.getElementById('robotOut');
+  const out = document.getElementById('robotText').querySelector('code');
+  const canvas = document.getElementById('robotCanvas');
+  document.getElementById('robotTitle').textContent = 'Como o robô lê o currículo da ' + nome;
+  box.style.display = 'block';
+  box.scrollIntoView({behavior:'smooth', block:'center'});
+  out.textContent = 'Lendo o PDF…';
+
+  try {
+    if (!window.pdfjsLib) throw new Error('biblioteca não carregou');
+    const pdf = await pdfjsLib.getDocument(url).promise;
+
+    // 1ª página renderizada = "o que VOCÊ vê"
+    const page1 = await pdf.getPage(1);
+    const base = page1.getViewport({scale:1});
+    const wrapW = (canvas.parentElement.clientWidth || 320) - 24;
+    const scale = Math.max(0.4, Math.min(1.6, wrapW / base.width));
+    const viewport = page1.getViewport({scale});
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    await page1.render({canvasContext: canvas.getContext('2d'), viewport}).promise;
+
+    // Texto na ordem CRUA do conteúdo = "o que o ROBÔ vê" (sem reconstruir colunas)
+    let texto = '';
+    for (let p = 1; p <= pdf.numPages; p++){
+      const page = await pdf.getPage(p);
+      const content = await page.getTextContent();
+      const linha = content.items.map(i => i.str).join(' ').replace(/\s+/g,' ').trim();
+      texto += (p > 1 ? '\n\n— página ' + p + ' —\n' : '') + linha;
+    }
+    out.textContent = texto || '(não foi possível extrair texto deste PDF)';
+  } catch (e){
+    out.textContent = 'Não consegui ler o PDF aqui (' + e.message + ').\n'
+      + 'Plano B: abra o PDF, selecione tudo (Ctrl+A), copie e cole num bloco de notas.';
+  }
+}
+
+function copyById(btn, id){
+  const txt = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const old = btn.textContent;
+    btn.textContent = 'Copiado! ✓';
+    setTimeout(()=>btn.textContent = old, 1800);
+  });
+}
+function copyTpl(btn){ copyById(btn, 'tpl'); }
+</script>
+</body>
+</html>

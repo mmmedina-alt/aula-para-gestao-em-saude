@@ -1,0 +1,65 @@
+% Template BÔNUS — estilo "empilhado" (cabeçalho à esquerda, com Resumo).
+% Mesmo princípio ATS-friendly: 1 coluna, sem foto, texto linear.
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xurl}
+\geometry{top=1.4cm, bottom=1.4cm, left=1.6cm, right=1.6cm}
+\setcounter{secnumdepth}{0}
+\setlist[itemize]{leftmargin=1.1em, itemsep=0.15em, topsep=0.2em, parsep=0em, partopsep=0em}
+\pagestyle{empty}
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black}
+
+% Títulos de seção em negrito, com linha embaixo (estilo "empilhado")
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule\vspace{0.3ex}]
+\titlespacing*{\section}{0pt}{0.9em}{0.35em}
+
+% Entrada: cargo/título em negrito + subtítulo em itálico (empresa · local · datas)
+\newcommand{\entry}[2]{\noindent\textbf{#1}\\ \textit{#2}\par\vspace{0.15em}}
+
+\begin{document}
+
+% --- CABEÇALHO (alinhado à esquerda) ---
+{\Huge\textbf{Seu Nome}}\\[3pt]
+{\large Seu Cargo ou Área (ex.: Estudante de Gestão em Saúde)}\\[3pt]
+Sua Cidade, UF \textbullet{} Disponível para remoto\\
++55 51 90000-0000 \textbullet{} \href{mailto:seu.email@exemplo.com}{seu.email@exemplo.com}\\
+\href{https://www.linkedin.com/in/seu-usuario}{LinkedIn} \textbullet{} \href{https://github.com/seu-usuario}{GitHub} (opcional)
+
+\section{RESUMO}
+Um parágrafo curto (3 a 4 linhas) com seu perfil, foco e objetivo. Use palavras-chave reais
+da área/vaga — sem frases genéricas. Ex.: "Estudante de Gestão em Saúde com experiência em
+indicadores e processos administrativos, buscando estágio na área de qualidade hospitalar."
+
+\section{EDUCAÇÃO}
+\entry{Seu Curso (em andamento)}{Nome da Universidade \textbullet{} Cidade, UF \textbullet{} Ano -- Conclusão prevista}
+\entry{Ensino Médio Completo}{Nome da Escola \textbullet{} Cidade, UF \textbullet{} Ano}
+
+\section{EXPERIÊNCIA}
+\entry{Seu Cargo}{Nome da Empresa \textbullet{} Cidade, UF \textbullet{} Mês Ano -- Mês Ano}
+\begin{itemize}
+    \item Comece com um substantivo de ação e descreva o que você fez.
+    \item Seja específico; quantifique o resultado quando possível.
+    \item No máximo 3 bullets por entrada.
+\end{itemize}
+
+\section{PROJETOS E VOLUNTARIADOS}
+\entry{Nome do Projeto / Liga / Iniciação Científica}{Instituição \textbullet{} Cidade, UF \textbullet{} Mês Ano -- Mês Ano}
+\begin{itemize}
+    \item Atividades acadêmicas, extensão, monitoria, liga, voluntariado.
+\end{itemize}
+
+\section{HABILIDADES}
+\textbf{Ferramentas:} Ex.: Excel, Power BI, Google Workspace\\
+\textbf{Conhecimentos:} Ex.: indicadores em saúde, gestão de processos\\
+\textbf{Certificações:} Ex.: curso livre relevante (ano)\\
+\textbf{Idiomas:} Português (Nativo), Inglês (Intermediário)
+
+\end{document}
